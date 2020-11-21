@@ -4,33 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FifteenPuzzleGame.PresentationLayer
+namespace FifteenPuzzleGame.PresentationLayer.Impl.Utils
 {
-    public class GameView : IGameView
+    public class InputProcessor : IInputProcessor
     {
-        private readonly IDisplayer _displayer;
-
-        public GameView(IDisplayer displayer)
+        public InputProcessor()
         {
-            _displayer = displayer;
         }
 
-        public void ShowGreeting()
+        public ConsoleKey GetKeyInput()
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateGameField(GameField gameField)
+        public string[] GetLineInput()
         {
             throw new NotImplementedException();
         }
 
-        public void ShowSuccessMessage(int moveCount)
+        private string GetUserString()
         {
             throw new NotImplementedException();
         }
 
-        public void ShowErrorMessage()
+        private string[] ProcessInput(string input)
         {
             throw new NotImplementedException();
         }

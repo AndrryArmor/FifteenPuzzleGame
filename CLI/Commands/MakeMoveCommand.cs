@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FifteenPuzzleGame.PresentationLayer.Commands
+namespace FifteenPuzzleGame.PresentationLayer.Impl.Commands
 {
     public class MakeMoveCommand : IUndoableCommand
     {

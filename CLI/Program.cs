@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FifteenPuzzleGame.PresentationLayer
+namespace FifteenPuzzleGame.PresentationLayer.Impl
 {
     class Program
     {

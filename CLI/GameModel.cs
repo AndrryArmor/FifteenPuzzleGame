@@ -1,4 +1,4 @@
-﻿namespace FifteenPuzzleGame.PresentationLayer
+﻿namespace FifteenPuzzleGame.PresentationLayer.Impl
 {
     public class GameModel
     {

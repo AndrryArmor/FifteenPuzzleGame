@@ -7,7 +7,7 @@
     <ProjectGuid>{DAA67EDD-EC28-4743-A9AB-182A1035044E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BusinessLayer.Impl</RootNamespace>
+    <RootNamespace>FifteenPuzzleGame.BusinessLayer.Impl</RootNamespace>
     <AssemblyName>BusinessLayer.Impl</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

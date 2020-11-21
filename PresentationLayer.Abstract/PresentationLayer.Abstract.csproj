@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91E6C796-8561-48F7-BBF4-8C638376F4A4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>FifteenPuzzleGame.PresentationLayer</RootNamespace>
-    <AssemblyName>PresentationLayer</AssemblyName>
+    <ProjectGuid>{E990B9D2-63AA-4095-A689-A6B5744447BF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FifteenPuzzleGame.PresentationLayer.Abstract</RootNamespace>
+    <AssemblyName>PresentationLayer.Abstract</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,38 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHistory.cs" />
-    <Compile Include="Commands\MakeMoveCommand.cs" />
-    <Compile Include="Commands\StartGameCommand.cs" />
-    <Compile Include="Commands\UndoMoveCommand.cs" />
-    <Compile Include="Displayer.cs" />
-    <Compile Include="CommandManager.cs" />
-    <Compile Include="GameController.cs" />
-    <Compile Include="GameModel.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="ICommandManager.cs" />
+    <Compile Include="IDisplayer.cs" />
     <Compile Include="IGameView.cs" />
     <Compile Include="IInputProcessor.cs" />
-    <Compile Include="InputProcessor.cs" />
     <Compile Include="IUndoableCommand.cs" />
-    <Compile Include="Views\GameView.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\IDisplayer.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BusinessLayer.Abstract\BusinessLayer.Abstract.csproj">
-      <Project>{c5b9acce-082e-4404-9b59-02719efbe8ad}</Project>
-      <Name>BusinessLayer.Abstract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BusinessLayer.Impl\BusinessLayer.Impl.csproj">
-      <Project>{daa67edd-ec28-4743-a9ab-182a1035044e}</Project>
-      <Name>BusinessLayer.Impl</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

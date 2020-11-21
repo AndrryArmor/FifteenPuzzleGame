@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FifteenPuzzleGame.PresentationLayer
+namespace FifteenPuzzleGame.PresentationLayer.Abstract
 {
     public interface IInputProcessor
     {
