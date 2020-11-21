@@ -15,22 +15,22 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl.Utils
 
         public ConsoleKey GetKeyInput()
         {
-            throw new NotImplementedException();
+            return Console.ReadKey(true).Key;
         }
 
         public string[] GetLineInput()
         {
-            throw new NotImplementedException();
+            return ProcessInput(GetUserString());
         }
 
         private string GetUserString()
         {
-            throw new NotImplementedException();
+            return Console.ReadLine();
         }
 
         private string[] ProcessInput(string input)
         {
-            throw new NotImplementedException();
+            return input.Split();
         }
     }
 }

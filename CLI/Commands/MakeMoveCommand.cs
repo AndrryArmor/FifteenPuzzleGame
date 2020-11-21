@@ -24,12 +24,13 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl.Commands
 
         public void Execute()
         {
+            _gameMemento = _game.Save();
             _game.MakeMove(_direction);
         }
 
         public void Undo()
         {
-            throw new NotImplementedException();
+            _game.Restore(_gameMemento);
         }
     }
 }

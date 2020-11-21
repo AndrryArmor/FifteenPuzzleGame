@@ -1,5 +1,6 @@
 ﻿using FifteenPuzzleGame.BusinessLayer.Abstract;
 using FifteenPuzzleGame.BusinessLayer.Entities;
+using FifteenPuzzleGame.BusinessLayer.Impl.GameCreators;
 using FifteenPuzzleGame.PresentationLayer.Abstract;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,13 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl.Commands
 
         public void Execute()
         {
-            throw new NotImplementedException();
+            GameCreator creator;
+            if (_gameSettings.HasRandomMoves)
+                creator = new RandomisedGameCreator();
+            else
+                creator = new ClassicalGameCreator();
+
+            _newGame = creator.CreateGame(_gameSettings);
         }
     }
 }

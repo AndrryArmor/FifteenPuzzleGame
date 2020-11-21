@@ -18,7 +18,7 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl.Commands
 
         public void Execute()
         {
-            _game.UndoMove();
+            _history.UndoLast();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FifteenPuzzleGame.BusinessLayer.Abstract;
+using FifteenPuzzleGame.BusinessLayer.Entities;
 using FifteenPuzzleGame.BusinessLayer.Impl;
 using FifteenPuzzleGame.BusinessLayer.Impl.GameCreators;
 using FifteenPuzzleGame.BusinessLayer.Impl.Games;
@@ -29,23 +30,77 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl
 
         public void Run()
         {
+            _gameView.ShowGreeting();
             while (true)
             {
-                _startMenuView.ShowStartMessage();
-                if (UserKeyPressed() == ConsoleKey.Escape)
-                    break;
+                int height;
+                int width;
+                GameLevel level;
+                bool hasRandomMoves;
 
-                SetGameFieldSize(out int fieldRows, out int fieldColumns);
-                FifteenPuzzleGameModel gameModel = new FifteenPuzzleGameModel()
+                string[] args = _inputProcessor.GetLineInput();
+                if (args.Length != 6)
                 {
-                    FieldRows = fieldRows,
-                    FieldColumns = fieldColumns,
-                    GameLevel = ChooseGameLevel(),
-                    HasSuddenRandomMoves = RandomMovesActivation()
-                };
+                    _gameView.ShowErrorMessage();
+                    continue;
+                }
+
+                string strHeight = args[2];
+                string strWidth = args[3];
+                string strLevel = args[4];
+                string strGameType = args[5];
+
+                if (int.TryParse(strHeight, out height) == false)
+                {
+                    _gameView.ShowErrorMessage();
+                    continue;
+                }
+                if (int.TryParse(strWidth, out width) == false)
+                {
+                    _gameView.ShowErrorMessage();
+                    continue;
+                }
+                switch (strLevel)
+                {
+                    case "-e":
+                    case "--easy":
+                        level = GameLevel.Easy;
+                        break;
+                    case "-m":
+                    case "--medium":
+                        level = GameLevel.Medium;
+                        break;
+                    case "-h":
+                    case "--hard":
+                        level = GameLevel.Hard;
+                        break;
+                    default:
+                        _gameView.ShowErrorMessage();
+                        continue;
+                }
+                switch (strGameType)
+                {
+                    case "-r":
+                    case "--random":
+                        hasRandomMoves = true;
+                        break;
+                    case "-c":
+                    case "--classic":
+                        hasRandomMoves = false;
+                        break;
+                    default:
+                        _gameView.ShowErrorMessage();
+                        continue;
+                }
+                _gameModel.GameSettings = new GameSettings(width, height, level, hasRandomMoves);
+                break;
+            }
+
+            _commandManager.StartGame.Execute();
+
+            while (true)
+            {
                 
-                Game newGame = CreateNewGame(gameModel);
-                StartGame(newGame);
             }
         }
 
@@ -141,44 +196,45 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl
             game.OnFieldChanged += Game_OnFieldChanged;
             game.OnPuzzleSolved += Game_OnPuzzleSolved;
             return game;
-        }
+        }*/
 
-        private void StartGame(IGame game)
+        private void StartGame()
         {
             bool escapeKeyPressed = false;
             do
             {
-                ICommand command = null;
-                ConsoleKey key = Console.ReadKey(true).Key;
+                ConsoleKey key = _inputProcessor.GetKeyInput();
                 switch (key)
                 {
                     case ConsoleKey.Escape:
                         escapeKeyPressed = true;
                         break;
                     case ConsoleKey.Backspace:
-                        command = new UndoMoveCommand(game);
+                        _commandManager.UndoMove.Execute();
                         break;
                     case ConsoleKey.UpArrow:
-                        command = new MakeMoveCommand(game, Direction.Up);
+                        _gameModel.CurrentDirection = Direction.Up;
+                        _commandManager.MakeMove.Execute();
                         break;
                     case ConsoleKey.RightArrow:
-                        command = new MakeMoveCommand(game, Direction.Right);
+                        _gameModel.CurrentDirection = Direction.Right;
+                        _commandManager.MakeMove.Execute();
                         break;
                     case ConsoleKey.DownArrow:
-                        command = new MakeMoveCommand(game, Direction.Down);
+                        _gameModel.CurrentDirection = Direction.Down;
+                        _commandManager.MakeMove.Execute();
                         break;
                     case ConsoleKey.LeftArrow:
-                        command = new MakeMoveCommand(game, Direction.Left);
+                        _gameModel.CurrentDirection = Direction.Left;
+                        _commandManager.MakeMove.Execute();
                         break;
                     default:
                         break;
                 }
-
-                command?.Execute();
             } while (!escapeKeyPressed);
 
             Console.Clear();
-        }*/
+        }
 
         private void Game_OnFieldChanged(object sender, int[,] e)
         {

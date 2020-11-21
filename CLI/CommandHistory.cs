@@ -9,16 +9,17 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl
 
         public CommandHistory()
         {
+            _commands = new Stack<IUndoableCommand>();
         }
 
-        void Add(IUndoableCommand command)
+        public void Add(IUndoableCommand command)
         {
-
+            _commands.Push(command);
         }
 
-        IUndoableCommand UndoLast()
+        public IUndoableCommand UndoLast()
         {
-
+            return _commands.Pop();
         }
     }
 }

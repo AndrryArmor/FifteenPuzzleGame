@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FifteenPuzzleGame.PresentationLayer.Impl.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,12 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl
     {
         static void Main(string[] args)
         {
-            StartMenuView startMenuView = new StartMenuView();
-            GameView gameView = new GameView();
-            GameController gameController = new GameController();
+            Displayer displayer = new Displayer();
+            GameView gameView = new GameView(displayer);
+            GameModel gameModel = new GameModel();
+            InputProcessor inputProcessor = new InputProcessor();
+            CommandManager commandManager = new CommandManager();
+            GameController gameController = new GameController(gameView, gameModel, inputProcessor, commandManager);
 
             gameController.Run();
         }

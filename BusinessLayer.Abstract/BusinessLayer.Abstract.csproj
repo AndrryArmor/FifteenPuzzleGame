@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="_FifteenPuzzleGameBase.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
