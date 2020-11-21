@@ -41,16 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameCreators\FifteenPuzzleGameWithRandomMovesCreator.cs" />
-    <Compile Include="Games\ClassicalFifteenPuzzleGame.cs" />
+    <Compile Include="GameCreators\RandomisedGameCreator.cs" />
+    <Compile Include="GameEngine.cs" />
+    <Compile Include="GameField.cs" />
+    <Compile Include="GameSettings.cs" />
+    <Compile Include="Games\ClassicalGame.cs" />
     <Compile Include="Enums\Direction.cs" />
-    <Compile Include="FifteenPuzzleGameBase.cs" />
-    <Compile Include="FifteenPuzzleGameModel.cs" />
-    <Compile Include="Games\FifteenPuzzleGameWithRandomMoves.cs" />
-    <Compile Include="GameCreators\ClassicalFifteenPuzzleGameCreator.cs" />
-    <Compile Include="GameCreator.cs" />
+    <Compile Include="Games\RandomisedGame.cs" />
+    <Compile Include="GameCreators\ClassicalGameCreator.cs" />
     <Compile Include="Enums\GameLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ShuffleService.cs" />
+    <Compile Include="Tile.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer.Abstract\BusinessLayer.Abstract.csproj">
@@ -58,5 +60,6 @@
       <Name>BusinessLayer.Abstract</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

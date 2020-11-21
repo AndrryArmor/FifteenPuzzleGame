@@ -7,31 +7,19 @@ using System.Threading.Tasks;
 
 namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
 {
-    public class FifteenPuzzleGameWithRandomMoves : FifteenPuzzleGameBase, Game
+    public class RandomisedGame : Game
     {
         private readonly Random _random;
         private readonly int _randomMovesCount;
-        private EventHandler<int[,]> FieldChangedEvent;
 
-        public FifteenPuzzleGameWithRandomMoves(FifteenPuzzleGameModel model) : base(model) 
+        public RandomisedGame(GameSettings settings) : base(settings) 
         {
             int secondsNow = DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second;
             _random = new Random(secondsNow);
             _randomMovesCount = Rows * Columns;
         }
 
-        public event EventHandler OnPuzzleSolved;
-        public event EventHandler<int[,]> OnFieldChanged
-        {
-            add
-            {
-                FieldChangedEvent += value;
-                value(this, Field);
-            }
-            remove => FieldChangedEvent -= value;
-        }
-
-        public void MakeMove(object parameter)
+        public override void MakeMove(Direction direction)
         {
             Direction moveDirection = (Direction)parameter;
             if (History.Count % _randomMovesCount == 0 && _random.NextDouble() >= 0.5)
@@ -49,7 +37,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
                 OnPuzzleSolved(this, EventArgs.Empty);
         }
 
-        public void UndoMove()
+        /*public void UndoMove()
         {
             if (History.Count < 2)
                 return;
@@ -88,6 +76,6 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
 
                 Swap(ref Field[randomRow, randomColumn], ref Field[tileToSwapRow, tileToSwapColumn]);
             }
-        }
+        }*/
     }
 }

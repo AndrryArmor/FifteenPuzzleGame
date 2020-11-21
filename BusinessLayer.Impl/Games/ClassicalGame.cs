@@ -7,24 +7,11 @@ using System.Threading.Tasks;
 
 namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
 {
-    public class ClassicalFifteenPuzzleGame : FifteenPuzzleGameBase, Game
+    public class ClassicalGame : Game
     {
-        private event EventHandler<int[,]> FieldChangedEvent;
+        public ClassicalGame(GameSettings settings) : base(settings) { }
 
-        public ClassicalFifteenPuzzleGame(FifteenPuzzleGameModel model) : base(model) { }
-
-        public event EventHandler OnPuzzleSolved;
-        public event EventHandler<int[,]> OnFieldChanged
-        {
-            add
-            {
-                FieldChangedEvent += value;
-                value(this, Field);
-            }
-            remove => FieldChangedEvent -= value;
-        }
-
-        public void MakeMove(object parameter)
+        public override void MakeMove(Direction direction)
         {
             Direction moveDirection = (Direction)parameter;
             FindSpace(out int spaceRow, out int spaceColumn);
@@ -40,7 +27,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
                 OnPuzzleSolved(this, EventArgs.Empty);
         }
 
-        public void UndoMove()
+        /*public void UndoMove()
         {
             if (History.Count < 2)
                 return;
@@ -49,6 +36,6 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
             Memento memento = History.Peek();
             Field = memento.Field;
             FieldChangedEvent(this, Field);
-        }
+        }*/
     }
 }

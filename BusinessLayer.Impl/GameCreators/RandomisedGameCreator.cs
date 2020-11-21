@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace FifteenPuzzleGame.BusinessLayer.Impl.GameCreators
 {
-    public class FifteenPuzzleGameWithRandomMovesCreator : GameCreator
+    public class RandomisedGameCreator : GameCreator
     {
-        public FifteenPuzzleGameWithRandomMovesCreator() : base() { }
+        public RandomisedGameCreator() : base() { }
 
-        public override Game CreateGame(FifteenPuzzleGameModel gameModel)
+        public override Game CreateGame(GameSettings settings)
         {
             return new FifteenPuzzleGameWithRandomMoves(gameModel);
         }
