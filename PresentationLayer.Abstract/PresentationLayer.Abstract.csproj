@@ -49,5 +49,11 @@
     <Compile Include="IUndoableCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayer.Entities\BusinessLayer.Entities.csproj">
+      <Project>{934d98e5-8860-4311-b255-e1699bff4e95}</Project>
+      <Name>BusinessLayer.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

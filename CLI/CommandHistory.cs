@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using FifteenPuzzleGame.PresentationLayer.Abstract;
+using System.Collections.Generic;
 
 namespace FifteenPuzzleGame.PresentationLayer.Impl
 {

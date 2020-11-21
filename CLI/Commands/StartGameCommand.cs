@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FifteenPuzzleGame.BusinessLayer.Abstract;
+using FifteenPuzzleGame.BusinessLayer.Entities;
+using FifteenPuzzleGame.PresentationLayer.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

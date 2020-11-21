@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FifteenPuzzleGame.BusinessLayer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Abstract
 
         public abstract void MakeMove(Direction direction);
 
-        private void bool IsPuzzleSolved();
+        private bool IsPuzzleSolved();
 
         public Memento Save()
         {

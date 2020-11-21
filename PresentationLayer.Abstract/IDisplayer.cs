@@ -1,4 +1,6 @@
-﻿namespace FifteenPuzzleGame.PresentationLayer.Abstract
+﻿using FifteenPuzzleGame.BusinessLayer.Entities;
+
+namespace FifteenPuzzleGame.PresentationLayer.Abstract
 {
     public interface IDisplayer
     {

@@ -64,9 +64,17 @@
       <Project>{c5b9acce-082e-4404-9b59-02719efbe8ad}</Project>
       <Name>BusinessLayer.Abstract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BusinessLayer.Entities\BusinessLayer.Entities.csproj">
+      <Project>{934d98e5-8860-4311-b255-e1699bff4e95}</Project>
+      <Name>BusinessLayer.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BusinessLayer.Impl\BusinessLayer.Impl.csproj">
       <Project>{daa67edd-ec28-4743-a9ab-182a1035044e}</Project>
       <Name>BusinessLayer.Impl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PresentationLayer.Abstract\PresentationLayer.Abstract.csproj">
+      <Project>{e990b9d2-63aa-4095-a689-a6b5744447bf}</Project>
+      <Name>PresentationLayer.Abstract</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

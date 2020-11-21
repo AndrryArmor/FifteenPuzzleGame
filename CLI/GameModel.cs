@@ -1,4 +1,6 @@
-﻿namespace FifteenPuzzleGame.PresentationLayer.Impl
+﻿using FifteenPuzzleGame.BusinessLayer.Entities;
+
+namespace FifteenPuzzleGame.PresentationLayer.Impl
 {
     public class GameModel
     {

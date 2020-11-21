@@ -1,5 +1,7 @@
 ﻿using FifteenPuzzleGame.BusinessLayer.Abstract;
+using FifteenPuzzleGame.BusinessLayer.Entities;
 using FifteenPuzzleGame.BusinessLayer.Impl;
+using FifteenPuzzleGame.PresentationLayer.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,7 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl.Commands
     {
         private readonly Game _game;
         private readonly Direction _direction;
-        private Memento _memento;
+        private Game.Memento _gameMemento;
 
         public MakeMoveCommand(Game game, Direction direction)
         {

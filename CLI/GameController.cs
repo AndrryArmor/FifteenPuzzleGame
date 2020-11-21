@@ -2,8 +2,7 @@
 using FifteenPuzzleGame.BusinessLayer.Impl;
 using FifteenPuzzleGame.BusinessLayer.Impl.GameCreators;
 using FifteenPuzzleGame.BusinessLayer.Impl.Games;
-using FifteenPuzzleGame.PresentationLayer.Commands;
-using FifteenPuzzleGame.PresentationLayer.Views;
+using FifteenPuzzleGame.PresentationLayer.Abstract;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
