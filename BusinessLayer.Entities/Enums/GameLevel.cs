@@ -1,4 +1,4 @@
-﻿namespace FifteenPuzzleGame.BusinessLayer.Impl
+﻿namespace FifteenPuzzleGame.BusinessLayer.Entities
 {
     public enum GameLevel
     {

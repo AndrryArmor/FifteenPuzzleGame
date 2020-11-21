@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FifteenPuzzleGame.BusinessLayer.Impl
+namespace FifteenPuzzleGame.BusinessLayer.Entities
 {
     public class GameField
     {
