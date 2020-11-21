@@ -11,6 +11,8 @@ namespace FifteenPuzzleGame.BusinessLayer.Abstract
     {
         protected GameCreator()
         {
+            Game.Memento memento = new Game.Memento();
+            memento.
         }
 
         public abstract Game CreateGame(GameSettings settings);
