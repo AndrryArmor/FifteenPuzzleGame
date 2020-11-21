@@ -45,7 +45,7 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl
                     HasSuddenRandomMoves = RandomMovesActivation()
                 };
                 
-                IGame newGame = CreateNewGame(gameModel);
+                Game newGame = CreateNewGame(gameModel);
                 StartGame(newGame);
             }
         }

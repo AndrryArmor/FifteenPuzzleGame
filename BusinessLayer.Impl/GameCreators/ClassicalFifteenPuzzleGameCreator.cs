@@ -13,7 +13,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.GameCreators
     {
         public ClassicalFifteenPuzzleGameCreator() : base() { }
 
-        public override IGame CreateGame(FifteenPuzzleGameModel gameModel)
+        public override Game CreateGame(FifteenPuzzleGameModel gameModel)
         {
             return new ClassicalFifteenPuzzleGame(gameModel);
         }

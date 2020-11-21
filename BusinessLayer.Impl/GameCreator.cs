@@ -12,6 +12,6 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl
     {
         protected GameCreator() { }
 
-        public abstract IGame CreateGame(FifteenPuzzleGameModel gameModel);
+        public abstract Game CreateGame(FifteenPuzzleGameModel gameModel);
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
 {
-    public class ClassicalFifteenPuzzleGame : FifteenPuzzleGameBase, IGame
+    public class ClassicalFifteenPuzzleGame : FifteenPuzzleGameBase, Game
     {
         private event EventHandler<int[,]> FieldChangedEvent;
 

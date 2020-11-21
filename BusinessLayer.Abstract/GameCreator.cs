@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace FifteenPuzzleGame.BusinessLayer.Abstract
 {
-    public interface IGame
+    public abstract class GameCreator
     {
-        event EventHandler<int[,]> OnFieldChanged;
-        event EventHandler OnPuzzleSolved;
+        protected GameCreator()
+        {
+        }
 
-        void MakeMove(object parameter);
-        void UndoMove();
+        public abstract Game CreateGame(GameSettings settings);
     }
 }

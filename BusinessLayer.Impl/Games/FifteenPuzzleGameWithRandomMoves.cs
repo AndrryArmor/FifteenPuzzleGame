@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
 {
-    public class FifteenPuzzleGameWithRandomMoves : FifteenPuzzleGameBase, IGame
+    public class FifteenPuzzleGameWithRandomMoves : FifteenPuzzleGameBase, Game
     {
         private readonly Random _random;
         private readonly int _randomMovesCount;

@@ -13,7 +13,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.GameCreators
     {
         public FifteenPuzzleGameWithRandomMovesCreator() : base() { }
 
-        public override IGame CreateGame(FifteenPuzzleGameModel gameModel)
+        public override Game CreateGame(FifteenPuzzleGameModel gameModel)
         {
             return new FifteenPuzzleGameWithRandomMoves(gameModel);
         }
