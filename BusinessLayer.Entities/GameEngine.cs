@@ -9,7 +9,6 @@ namespace FifteenPuzzleGame.BusinessLayer.Entities
     public class GameEngine
     {
         private static GameEngine _gameEngine;
-        public const int Directions = 4;
 
         private GameEngine()
         {
@@ -22,18 +21,17 @@ namespace FifteenPuzzleGame.BusinessLayer.Entities
             return _gameEngine;
         }
 
-        bool MakeMove(GameField gameField, Direction direction)
+        public bool MakeMove(Tile tile, Direction direction, GameField gameField)
         {
-            Tile neighbourTile = GetNeighbourTileByDirection(gameField, gameField.SpaceTile, direction);
+            Tile neighbourTile = GetNeighbourTileByDirection(tile, direction, gameField);
             if (neighbourTile == null)
                 return false;
 
-            Tile spaceTile = gameField.SpaceTile;
-            Swap(ref spaceTile, ref neighbourTile);
+            Swap(ref tile, ref neighbourTile);
             return true;
         }
 
-        private Tile GetNeighbourTileByDirection(GameField gameField, Tile tile, Direction direction)
+        private Tile GetNeighbourTileByDirection(Tile tile, Direction direction, GameField gameField)
         {
             Tile neighbourTile = null;
             switch (direction)

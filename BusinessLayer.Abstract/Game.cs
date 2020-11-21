@@ -9,24 +9,24 @@ namespace FifteenPuzzleGame.BusinessLayer.Abstract
 {
     public abstract class Game
     {
-        private readonly GameEngine _engine;
+        protected GameEngine Engine { get; }
 
         protected Game(GameSettings settings)
         {
-            _engine = GameEngine.CreateInstance();
+            Engine = GameEngine.CreateInstance();
             GameField = new GameField(settings.FieldHeight, settings.FieldWidth);
             Moves = 0;
         }
 
-        public event EventHandler OnFieldUpdated;
-        public event EventHandler OnPuzzleSolved;
+        public event EventHandler FieldUpdated;
+        public event EventHandler PuzzleSolved;
 
         public GameField GameField { get; private set; }
         public int Moves { get; private set; }
 
         public abstract void MakeMove(Direction direction);
 
-        private bool IsPuzzleSolved()
+        protected bool IsPuzzleSolved()
         {
             for (int i = 0; i < GameField.Rows; i++)
             {
@@ -50,6 +50,14 @@ namespace FifteenPuzzleGame.BusinessLayer.Abstract
         public void Restore(Memento memento)
         {
             memento.Restore();
+        }
+
+        protected virtual void OnFieldUpdated(EventArgs e)
+        {
+            FieldUpdated?.Invoke(this, e);
+
+            if (IsPuzzleSolved())
+                PuzzleSolved(this, e);
         }
 
         public class Memento

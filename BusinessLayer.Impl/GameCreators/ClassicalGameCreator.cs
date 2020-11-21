@@ -1,5 +1,6 @@
 ﻿using FifteenPuzzleGame.BusinessLayer.Abstract;
 using FifteenPuzzleGame.BusinessLayer.Entities;
+using FifteenPuzzleGame.BusinessLayer.Impl.Games;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.GameCreators
 
         public override Game CreateGame(GameSettings settings)
         {
-            return new ClassicalFifteenPuzzleGame(gameModel);
+            return new ClassicalGame(settings);
         }
     }
 }

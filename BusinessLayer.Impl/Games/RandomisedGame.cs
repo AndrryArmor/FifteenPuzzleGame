@@ -1,5 +1,6 @@
 ﻿using FifteenPuzzleGame.BusinessLayer.Abstract;
 using FifteenPuzzleGame.BusinessLayer.Entities;
+using FifteenPuzzleGame.BusinessLayer.Impl.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,66 +18,43 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
         {
             int secondsNow = DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second;
             _random = new Random(secondsNow);
-            _randomMovesCount = Rows * Columns;
+            _randomMovesCount = GameField.Rows * GameField.Columns;
+
+            ShuffleService shuffleService = new ShuffleService(GameField, settings.GameLevel, Engine);
+            shuffleService.Shuffle();
         }
 
         public override void MakeMove(Direction direction)
         {
-            Direction moveDirection = (Direction)parameter;
-            if (History.Count % _randomMovesCount == 0 && _random.NextDouble() >= 0.5)
+            if (Moves % _randomMovesCount == 0 && _random.NextDouble() >= 0.5)
             {
                 MakeRandomTileSwap();
-                History.Clear();
+                // TODO: history clearing
+                //History.Clear();
+                OnFieldUpdated(EventArgs.Empty);
             }
             else
-                MakeTileSwap(moveDirection);
-
-            FieldChangedEvent(this, Field);
-            History.Push(new Memento(Field));
-
-            if (IsPuzzleSolved())
-                OnPuzzleSolved(this, EventArgs.Empty);
+                MakeTileSwap(direction);
         }
 
-        /*public void UndoMove()
+        private void MakeTileSwap(Direction direction)
         {
-            if (History.Count < 2)
-                return;
-
-            History.Pop();
-            Memento memento = History.Peek();
-            Field = memento.Field;
-            FieldChangedEvent(this, Field);
-        }
-
-        private void MakeTileSwap(Direction moveDirection)
-        {
-            FindSpace(out int spaceRow, out int spaceColumn);
-            if (GetNeighbourByDirection(spaceRow, spaceColumn, moveDirection,
-                out int newSpaceRow, out int newSpaceColumn) == false)
-                return;
-
-            Swap(ref Field[spaceRow, spaceColumn], ref Field[newSpaceRow, newSpaceColumn]);
+            if (Engine.MakeMove(GameField.SpaceTile, direction, GameField) == true)
+                OnFieldUpdated(EventArgs.Empty);
         }
 
         private void MakeRandomTileSwap()
         {
             for (int i = 0; i * i <= _randomMovesCount; i++)
             {
-                int randomRow = _random.Next(Rows);
-                int randomColumn = _random.Next(Columns);
-                int tileToSwapRow = 0;
-                int tileToSwapColumn = 0;
-                bool isNeighbour = false;
-                while (isNeighbour == false)
+                Tile randomTile = GameField[_random.Next(GameField.Rows), _random.Next(GameField.Columns)];
+                Direction randomDirection = default;
+                do
                 {
-                    Direction randomDirection = (Direction)_random.Next(Directions);
-                    isNeighbour = GetNeighbourByDirection(randomRow, randomColumn, randomDirection,
-                                  out tileToSwapRow, out tileToSwapColumn);
-                }
-
-                Swap(ref Field[randomRow, randomColumn], ref Field[tileToSwapRow, tileToSwapColumn]);
+                    int directions = Enum.GetValues(randomDirection.GetType()).Length;
+                    randomDirection = (Direction)_random.Next(directions);
+                } while (Engine.MakeMove(randomTile, randomDirection, GameField) == false);
             }
-        }*/
+        }
     }
 }
