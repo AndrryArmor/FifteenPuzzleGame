@@ -13,9 +13,9 @@ namespace FifteenPuzzleGame.PresentationLayer
         {
             StartMenuView startMenuView = new StartMenuView();
             GameView gameView = new GameView();
-            MainController gameController = new MainController(startMenuView, gameView);
+            GameController gameController = new GameController();
 
-            gameController.Launch();
+            gameController.Run();
         }
     }
 }

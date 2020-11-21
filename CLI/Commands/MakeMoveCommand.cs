@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace FifteenPuzzleGame.PresentationLayer.Commands
 {
-    public class MakeMoveCommand : ICommand
+    public class MakeMoveCommand : IUndoableCommand
     {
-        private readonly IGame _game;
+        private readonly Game _game;
         private readonly Direction _direction;
+        private Memento _memento;
 
-        public MakeMoveCommand(IGame game, Direction direction)
+        public MakeMoveCommand(Game game, Direction direction)
         {
             _game = game;
             _direction = direction;
@@ -22,6 +23,11 @@ namespace FifteenPuzzleGame.PresentationLayer.Commands
         public void Execute()
         {
             _game.MakeMove(_direction);
+        }
+
+        public void Undo()
+        {
+            throw new NotImplementedException();
         }
     }
 }

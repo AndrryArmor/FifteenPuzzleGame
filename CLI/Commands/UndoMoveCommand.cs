@@ -9,11 +9,11 @@ namespace FifteenPuzzleGame.PresentationLayer.Commands
 {
     public class UndoMoveCommand : ICommand
     {
-        private readonly IGame _game;
+        private readonly CommandHistory _history;
 
-        public UndoMoveCommand(IGame game)
+        public UndoMoveCommand(CommandHistory history)
         {
-            _game = game;
+            _history = history;
         }
 
         public void Execute()

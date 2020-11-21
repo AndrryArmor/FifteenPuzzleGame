@@ -13,18 +13,22 @@ using System.Threading.Tasks;
 
 namespace FifteenPuzzleGame.PresentationLayer
 {
-    public class MainController
+    public class GameController
     {
-        private readonly StartMenuView _startMenuView;
-        private readonly GameView _gameView;
+        private readonly IGameView _gameView;
+        private readonly GameModel _gameModel;
+        private readonly IInputProcessor _inputProcessor;
+        private readonly ICommandManager _commandManager;
 
-        public MainController(StartMenuView startMenuView, GameView gameView)
+        public GameController(IGameView gameView, GameModel gameModel, IInputProcessor inputProcessor, ICommandManager commandManager)
         {
-            _startMenuView = startMenuView;
             _gameView = gameView;
+            _gameModel = gameModel;
+            _inputProcessor = inputProcessor;
+            _commandManager = commandManager;
         }
 
-        public void Launch()
+        public void Run()
         {
             while (true)
             {
@@ -46,7 +50,7 @@ namespace FifteenPuzzleGame.PresentationLayer
             }
         }
 
-        private ConsoleKey UserKeyPressed()
+        /*private ConsoleKey UserKeyPressed()
         {
             ConsoleKey key;
 
@@ -175,16 +179,16 @@ namespace FifteenPuzzleGame.PresentationLayer
             } while (!escapeKeyPressed);
 
             Console.Clear();
-        }
+        }*/
 
         private void Game_OnFieldChanged(object sender, int[,] e)
         {
-            _gameView.UpdateGameField(e);
+            //_gameView.UpdateGameField(e);
         }
 
         private void Game_OnPuzzleSolved(object sender, EventArgs e)
         {
-            _gameView.ShowSuccessMessage();
+            //_gameView.ShowSuccessMessage();
         }
     }
 }
