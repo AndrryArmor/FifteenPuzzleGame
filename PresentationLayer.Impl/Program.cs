@@ -1,4 +1,5 @@
-﻿using FifteenPuzzleGame.PresentationLayer.Impl.Utils;
+﻿using FifteenPuzzleGame.PresentationLayer.Impl.Commands;
+using FifteenPuzzleGame.PresentationLayer.Impl.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl
             GameModel gameModel = new GameModel();
             InputProcessor inputProcessor = new InputProcessor();
             CommandManager commandManager = new CommandManager();
+            commandManager.StartGame = new StartGameCommand(gameModel.CurrentGame, gameModel.GameSettings);
+            commandManager.MakeMove = new MakeMoveCommand(gameModel.CurrentGame, gameModel.CurrentDirection);
+            commandManager.UndoMove = new UndoMoveCommand(commandManager.CommandHistory);
             GameController gameController = new GameController(gameView, gameModel, inputProcessor, commandManager);
 
             gameController.Run();
