@@ -12,7 +12,7 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl.Utils
         public InputProcessor()
         {
         }
-
+        
         public ConsoleKey GetKeyInput()
         {
             return Console.ReadKey(true).Key;
@@ -30,7 +30,7 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl.Utils
 
         private string[] ProcessInput(string input)
         {
-            return input.Split();
+            return input.Split().Select(arg => arg.ToLower()).ToArray();
         }
     }
 }

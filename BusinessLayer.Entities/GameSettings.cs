@@ -8,17 +8,17 @@ namespace FifteenPuzzleGame.BusinessLayer.Entities
 {
     public class GameSettings
     {
-        public GameSettings(int fieldWidth, int fieldHeight, GameLevel gameLevel, bool hasRandomMoves)
+        public GameSettings(int fieldWidth, int fieldHeight, GameLevel gameLevel, GameMode gameMode)
         {
             FieldWidth = fieldWidth;
             FieldHeight = fieldHeight;
             GameLevel = gameLevel;
-            HasRandomMoves = hasRandomMoves;
+            GameMode = gameMode;
         }
 
         public int FieldWidth { get; }
         public int FieldHeight { get; }
         public GameLevel GameLevel { get; }
-        public bool HasRandomMoves { get; }
+        public GameMode GameMode { get; }
     }
 }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\GameLevel.cs" />
+    <Compile Include="Enums\GameMode.cs" />
     <Compile Include="GameEngine.cs" />
     <Compile Include="GameField.cs" />
     <Compile Include="GameSettings.cs" />

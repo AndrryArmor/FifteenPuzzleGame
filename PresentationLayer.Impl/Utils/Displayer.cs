@@ -64,9 +64,9 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl.Utils
             }
             Console.WriteLine("╝");
 
-            Console.WriteLine("Move the space by pressing arrow keys.");
-            Console.WriteLine("Press Backspace button to undo move");
-            Console.WriteLine("Press ESC button to exit game.");
+            ShowText("Move the space by pressing arrow keys.");
+            ShowText("Press <Backspace> to undo move");
+            ShowText("Press <ESC> to quit game.");
         }
 
         private void Clear()

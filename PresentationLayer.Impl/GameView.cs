@@ -39,7 +39,7 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl
         public void ShowSuccessMessage(int moveCount)
         {
             _displayer.ShowText("Hooray! You solved the puzzle in " + moveCount + " moves");
-            _displayer.ShowText("Press any key to quit...");
+            _displayer.ShowText("Press <Escape> to quit game ...");
         }
 
         public void ShowErrorMessage()

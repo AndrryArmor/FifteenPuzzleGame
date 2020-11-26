@@ -41,6 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandInvoker.cs" />
+    <Compile Include="Commands\MakeMoveLeftCommand.cs" />
+    <Compile Include="Commands\MakeMoveRightCommand.cs" />
+    <Compile Include="Commands\MakeMoveDownCommand.cs" />
+    <Compile Include="Commands\MakeMoveUpCommand.cs" />
+    <Compile Include="GameClient.cs" />
     <Compile Include="GameCreators\RandomisedGameCreator.cs" />
     <Compile Include="Games\ClassicalGame.cs" />
     <Compile Include="Games\RandomisedGame.cs" />

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FifteenPuzzleGame.PresentationLayer.Abstract
+namespace FifteenPuzzleGame.BusinessLayer.Abstract
 {
-    public interface ICommand
+    public interface IUndoableCommand
     {
         void Execute();
+        void Undo();
     }
 }

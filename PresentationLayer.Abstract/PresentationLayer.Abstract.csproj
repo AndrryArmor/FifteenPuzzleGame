@@ -41,12 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICommand.cs" />
-    <Compile Include="ICommandManager.cs" />
     <Compile Include="IDisplayer.cs" />
     <Compile Include="IGameView.cs" />
     <Compile Include="IInputProcessor.cs" />
-    <Compile Include="IUndoableCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

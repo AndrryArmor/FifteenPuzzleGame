@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="GameCreator.cs" />
+    <Compile Include="IGameClient.cs" />
+    <Compile Include="IUndoableCommand.cs" />
+    <Compile Include="MakeMoveCommandBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
