@@ -4,7 +4,7 @@ namespace FifteenPuzzleGame.PresentationLayer.Abstract
 {
     public interface IDisplayer
     {
-        void ShowText(string text);
+        void ShowText(string text, bool putNewLine = true);
         void DrawGameField(GameField gameField);
     }
 }

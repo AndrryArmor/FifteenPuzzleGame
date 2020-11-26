@@ -22,7 +22,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Abstract
         public event EventHandler PuzzleSolved;
 
         public GameField GameField { get; private set; }
-        public int Moves { get; private set; }
+        public int Moves { get; protected set; }
 
         public abstract void MakeMove(Direction direction);
 
@@ -32,7 +32,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Abstract
             {
                 for (int j = 0; j < GameField.Columns; j++)
                 {
-                    if (GameField[i, j].Value != i * GameField.Columns + j + 1)
+                    if (GameField[i, j].Value != (i * GameField.Columns + j + 1) % GameField.Field.Length)
                     {
                         return false;
                     }
@@ -50,6 +50,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Abstract
         public void Restore(Memento memento)
         {
             memento.Restore();
+            OnFieldUpdated(EventArgs.Empty);
         }
 
         protected virtual void OnFieldUpdated(EventArgs e)
@@ -69,7 +70,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Abstract
             public Memento(Game game)
             {
                 _game = game;
-                _gameField = _game.GameField;
+                _gameField = (GameField)game.GameField.Clone();
                 _moves = _game.Moves;
             }
 

@@ -27,7 +27,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Entities
             if (neighbourTile == null)
                 return false;
 
-            Swap(ref tile, ref neighbourTile);
+            Swap(tile, neighbourTile, gameField);
             return true;
         }
 
@@ -38,27 +38,29 @@ namespace FifteenPuzzleGame.BusinessLayer.Entities
             {
                 case Direction.Up:
                     if (tile.Row > 0)
-                        neighbourTile = new Tile(tile.Row - 1, tile.Column, tile.Value);
+                        neighbourTile = gameField[tile.Row - 1, tile.Column];
                     break;
                 case Direction.Right:
                     if (tile.Column < gameField.Columns - 1)
-                        neighbourTile = new Tile(tile.Row, tile.Column + 1, tile.Value);
+                        neighbourTile = gameField[tile.Row, tile.Column + 1];
                     break;
                 case Direction.Down:
                     if (tile.Row < gameField.Rows - 1)
-                        neighbourTile = new Tile(tile.Row + 1, tile.Column, tile.Value);
+                        neighbourTile = gameField[tile.Row + 1, tile.Column];
                     break;
                 case Direction.Left:
                     if (tile.Column > 0)
-                        neighbourTile = new Tile(tile.Row, tile.Column - 1, tile.Value);
+                        neighbourTile = gameField[tile.Row, tile.Column - 1];
                     break;
             }
             return neighbourTile;
         }
 
-        private void Swap(ref Tile left, ref Tile right)
+        private void Swap(Tile left, Tile right, GameField gameField)
         {
-            (left, right) = (right, left);
+            //Tile temp = gameField[left.Row, left.Column];
+            gameField[left.Row, left.Column] = gameField[right.Row, right.Column];
+            //gameField[right.Row, right.Column] = temp;
         }
     }
 }

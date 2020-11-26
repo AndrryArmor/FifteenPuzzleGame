@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace FifteenPuzzleGame.BusinessLayer.Entities
 {
-    public class GameField
+    public class GameField : ICloneable
     {
         public Tile[,] Field { get; }
-        public Tile SpaceTile { get; }
+        public Tile SpaceTile { get => GetSpaceTile(); }
         public int Rows => Field.GetLength(0);
         public int Columns => Field.GetLength(1);
 
@@ -25,14 +25,51 @@ namespace FifteenPuzzleGame.BusinessLayer.Entities
                 }
             }
 
-            SpaceTile = new Tile(rows - 1, columns - 1, 0);
-            Field[rows - 1, columns - 1] = SpaceTile;
+            Tile spaceTile = new Tile(rows - 1, columns - 1, 0);
+            Field[rows - 1, columns - 1] = spaceTile;
+        }
+
+        private GameField(Tile[,] field)
+        {
+            Field = new Tile[field.GetLength(0), field.GetLength(1)];
+            foreach (Tile tile in field)
+            {
+                Field[tile.Row, tile.Column] = new Tile(tile.Row, tile.Column, tile.Value);
+            }
         }
 
         public Tile this[int row, int column]
         {
             get => Field[row, column];
-            set => Field[row, column] = value;
+            set
+            {
+                Tile temp = Field[row, column];
+                Field[row, column] = value;
+                Field[value.Row, value.Column] = temp;
+                temp.Row = value.Row;
+                temp.Column = value.Column;
+                value.Row = row;
+                value.Column = column;
+            }
+        }
+
+        public object Clone()
+        {
+            return new GameField(Field);
+        }
+
+        private Tile GetSpaceTile()
+        {
+            Tile spaceTile = default;
+            foreach (Tile tile in Field)
+            {
+                if (tile.Value == 0)
+                {
+                    spaceTile = tile;
+                    break;
+                }
+            }
+            return spaceTile;
         }
     }
 }

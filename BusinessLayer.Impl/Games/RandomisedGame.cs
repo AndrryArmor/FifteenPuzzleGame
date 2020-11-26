@@ -26,11 +26,9 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
 
         public override void MakeMove(Direction direction)
         {
-            if (Moves % _randomMovesCount == 0 && _random.NextDouble() >= 0.5)
+            if (Moves > 0 && Moves % _randomMovesCount == 0 && _random.NextDouble() >= 0.5)
             {
                 MakeRandomTileSwap();
-                // TODO: history clearing
-                //History.Clear();
                 OnFieldUpdated(EventArgs.Empty);
             }
             else
@@ -40,21 +38,24 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
         private void MakeTileSwap(Direction direction)
         {
             if (Engine.MakeMove(GameField.SpaceTile, direction, GameField) == true)
+            {
                 OnFieldUpdated(EventArgs.Empty);
+                Moves++;
+            }
         }
 
         private void MakeRandomTileSwap()
         {
-            for (int i = 0; i * i <= _randomMovesCount; i++)
+            for (int i = 0; i < (int)Math.Log(_randomMovesCount); i++)
             {
-                Tile randomTile = GameField[_random.Next(GameField.Rows), _random.Next(GameField.Columns)];
                 Direction randomDirection = default;
                 do
                 {
                     int directions = Enum.GetValues(randomDirection.GetType()).Length;
                     randomDirection = (Direction)_random.Next(directions);
-                } while (Engine.MakeMove(randomTile, randomDirection, GameField) == false);
+                } while (Engine.MakeMove(GameField.SpaceTile, randomDirection, GameField) == false);
             }
+            Moves++;
         }
     }
 }

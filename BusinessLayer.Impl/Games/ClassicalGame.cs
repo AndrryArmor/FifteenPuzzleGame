@@ -20,7 +20,10 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
         public override void MakeMove(Direction direction)
         {
             if (Engine.MakeMove(GameField.SpaceTile, direction, GameField) == true)
+            {
                 OnFieldUpdated(EventArgs.Empty);
+                Moves++;
+            }
         }
     }
 }

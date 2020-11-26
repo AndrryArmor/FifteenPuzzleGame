@@ -14,9 +14,11 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl.Utils
         {
         }
 
-        public void ShowText(string text)
+        public void ShowText(string text, bool putEndLine = true)
         {
-            Console.WriteLine(text);
+            Console.Write(text);
+            if (putEndLine)
+                Console.WriteLine();
         }
 
         public void DrawGameField(GameField gameField)
@@ -41,7 +43,7 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl.Utils
                     if (gameField[i, j].Value != 0)
                     {
                         upperRow += "┌───┐";
-                        middleRow += "│" + string.Format("{0,3}", gameField[i, j]) + "│";
+                        middleRow += "│" + string.Format("{0,3}", gameField[i, j].Value) + "│";
                         lowerRow += "└───┘";
                     }
                     else

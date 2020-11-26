@@ -16,10 +16,11 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl
     public class GameController
     {
         private readonly IGameView _gameView;
-        private readonly GameClient _gameClient;
+        private readonly IGameClient _gameClient;
         private readonly IInputProcessor _inputProcessor;
+        private bool isPuzzleSolved;
 
-        public GameController(IGameView gameView, GameClient gameClient, IInputProcessor inputProcessor)
+        public GameController(IGameView gameView, IGameClient gameClient, IInputProcessor inputProcessor)
         {
             _gameView = gameView;
             _gameClient = gameClient;
@@ -33,6 +34,7 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl
             Game game = _gameClient.StartGame(gameSettings);
             game.FieldUpdated += Game_FieldUpdated;
             game.PuzzleSolved += Game_PuzzleSolved;
+            isPuzzleSolved = false;
             Game_FieldUpdated(game, EventArgs.Empty);
 
             bool escapeKeyPressed = false;
@@ -45,19 +47,24 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl
                         escapeKeyPressed = true;
                         break;
                     case ConsoleKey.Backspace:
-                        _gameClient.UndoMove();
+                        if (!isPuzzleSolved)
+                            _gameClient.UndoMove();
                         break;
                     case ConsoleKey.UpArrow:
-                        _gameClient.MakeMoveUp();
+                        if (!isPuzzleSolved)
+                            _gameClient.MakeMoveUp();
                         break;
                     case ConsoleKey.DownArrow:
-                        _gameClient.MakeMoveDown();
+                        if (!isPuzzleSolved)
+                            _gameClient.MakeMoveDown();
                         break;
                     case ConsoleKey.LeftArrow:
-                        _gameClient.MakeMoveLeft();
+                        if (!isPuzzleSolved)
+                            _gameClient.MakeMoveLeft();
                         break;
                     case ConsoleKey.RightArrow:
-                        _gameClient.MakeMoveRight();
+                        if (!isPuzzleSolved)
+                            _gameClient.MakeMoveRight();
                         break;
                     default:
                         break;
@@ -170,6 +177,7 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl
 
         private void Game_PuzzleSolved(object sender, EventArgs e)
         {
+            isPuzzleSolved = true;
             Game game = (Game)sender;
             _gameView.ShowSuccessMessage(game.Moves);
         }
