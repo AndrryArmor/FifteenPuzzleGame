@@ -28,7 +28,7 @@ namespace PresentationLayer.Tests
             Mock<ClassicalGame> game = new Mock<ClassicalGame>(mockGameSettings.Object);
             _upArrowPressCount = 0;
 
-            _gameClient.Setup(g => g.StartGame(mockGameSettings.Object)).Returns(/*game.Object*/ new ClassicalGame(mockGameSettings.Object));
+            _gameClient.Setup(g => g.StartGame(mockGameSettings.Object)).Returns(game.Object);
             _gameClient.Setup(g => g.MakeMoveUp()).Verifiable();
 
             _inputProcessor.Setup(i => i.GetKeyInput())

@@ -11,9 +11,9 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
 {
     public class ClassicalGame : Game
     {
-        public ClassicalGame(GameSettings settings) : base(settings)
+        public ClassicalGame(GameEngine engine, GameField gameField, ShuffleService shuffleService) : base(engine, gameField)
         {
-            ShuffleService shuffleService = new ShuffleService(GameField, settings.GameLevel, Engine);
+            //ShuffleService shuffleService = new ShuffleService(GameField, settings.GameLevel, Engine);
             shuffleService.Shuffle();
         }
 
