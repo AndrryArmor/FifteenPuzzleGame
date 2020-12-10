@@ -14,13 +14,11 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
         private readonly Random _random;
         private readonly int _randomMovesCount;
 
-        public RandomisedGame(GameEngine engine, GameField gameField, ShuffleService shuffleService) : base(engine, gameField)
+        public RandomisedGame(GameEngine engine, GameField gameField) : base(engine, gameField)
         {
             int secondsNow = DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second;
             _random = new Random(secondsNow);
             _randomMovesCount = GameField.Rows * GameField.Columns;
-
-            shuffleService.Shuffle();
         }
 
         public override void MakeMove(Direction direction)

@@ -19,7 +19,9 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.GameCreators
             var gameEngine = GameEngine.CreateInstance();
             var gameField = new GameField(settings.FieldHeight, settings.FieldWidth);
             var shuffleService = new ShuffleService(gameField, settings.GameLevel, gameEngine);
-            return new RandomisedGame(gameEngine, gameField, shuffleService);
+            shuffleService.Shuffle();
+
+            return new RandomisedGame(gameEngine, gameField);
         }
     }
 }

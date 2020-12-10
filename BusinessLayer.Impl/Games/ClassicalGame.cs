@@ -11,9 +11,8 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
 {
     public class ClassicalGame : Game
     {
-        public ClassicalGame(GameEngine engine, GameField gameField, ShuffleService shuffleService) : base(engine, gameField)
+        public ClassicalGame(GameEngine engine, GameField gameField) : base(engine, gameField)
         {
-            shuffleService.Shuffle();
         }
 
         public override void MakeMove(Direction direction)

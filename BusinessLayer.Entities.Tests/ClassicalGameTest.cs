@@ -14,20 +14,18 @@ namespace FifteenPuzzleGame.BusinessLayer.Tests
         private ClassicalGame _mockClassicalGame;
         private GameEngine _mockGameEngine;
         private GameField _mockGameField;
-        private ShuffleService _mockShuffleService;
 
         [SetUp]
         public void Setup()
         {
             _mockGameEngine = GameEngine.CreateInstance();
             _mockGameField = new GameField(3, 3);
-            _mockShuffleService = new ShuffleService(_mockGameField, GameLevel.Easy, _mockGameEngine);
         }
 
         [Test]
         public void MakeMove_MoveTileUp_ShouldIncreaseAmountMovesWhenMoveIsPossible()
         {
-            _mockClassicalGame = new ClassicalGame(_mockGameEngine, _mockGameField, _mockShuffleService);
+            _mockClassicalGame = new ClassicalGame(_mockGameEngine, _mockGameField);
             int expected = _mockClassicalGame.Moves + 1;
 
             _mockClassicalGame.MakeMove(Direction.Up);
@@ -38,7 +36,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Tests
         [Test]
         public void MakeMove_MoveTileUp_ShouldNotIncreaseAmountMovesWhenMoveIsImpossible()
         {
-            _mockClassicalGame = new ClassicalGame(_mockGameEngine, _mockGameField, _mockShuffleService);
+            _mockClassicalGame = new ClassicalGame(_mockGameEngine, _mockGameField);
             int expected = _mockClassicalGame.Moves;
 
             _mockClassicalGame.MakeMove(Direction.Up);
