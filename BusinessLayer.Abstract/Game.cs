@@ -11,10 +11,10 @@ namespace FifteenPuzzleGame.BusinessLayer.Abstract
     {
         protected GameEngine Engine { get; }
 
-        protected Game(GameSettings settings)
+        protected Game(GameEngine engine, GameField gameField)
         {
-            Engine = GameEngine.CreateInstance();
-            GameField = new GameField(settings.FieldHeight, settings.FieldWidth);
+            Engine = engine;
+            GameField = gameField;
             Moves = 0;
         }
 

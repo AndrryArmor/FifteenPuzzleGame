@@ -1,6 +1,7 @@
 ﻿using FifteenPuzzleGame.BusinessLayer.Abstract;
 using FifteenPuzzleGame.BusinessLayer.Entities;
 using FifteenPuzzleGame.BusinessLayer.Impl.Games;
+using FifteenPuzzleGame.BusinessLayer.Impl.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,10 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.GameCreators
 
         public override Game CreateGame(GameSettings settings)
         {
-            return new RandomisedGame(settings);
+            var gameEngine = GameEngine.CreateInstance();
+            var gameField = new GameField(settings.FieldHeight, settings.FieldWidth);
+            var shuffleService = new ShuffleService(gameField, settings.GameLevel, gameEngine);
+            return new RandomisedGame(gameEngine, gameField, shuffleService);
         }
     }
 }

@@ -8,7 +8,7 @@ using NUnit.Framework;
 
 namespace FifteenPuzzleGame.BusinessLayer.Tests
 {
-    public class ClassicalGameTest
+    /*public class ClassicalGameTest
     {
         private ClassicalGame _mockClassicalGame;
         private GameEngine _mockGameEngine;
@@ -43,5 +43,5 @@ namespace FifteenPuzzleGame.BusinessLayer.Tests
 
             Assert.AreEqual(expected, _mockClassicalGame.Moves);
         }
-    }
+    }*/
 }
