@@ -20,7 +20,7 @@ namespace BusinessLayer.Tests
         {
             _startGameField = new GameField(3, 3);
             _gameField = new GameField(3, 3);
-            _mockGameEngine = GameEngine.CreateInstance();
+            _mockGameEngine = new GameEngine() /*GameEngine.CreateInstance()*/;
         }
 
         [Test]

@@ -16,7 +16,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.GameCreators
 
         public override Game CreateGame(GameSettings settings)
         {
-            var gameEngine= GameEngine.CreateInstance();
+            var gameEngine = new GameEngine();
             var gameField = new GameField(settings.FieldHeight, settings.FieldWidth);
             var shuffleService = new ShuffleService(gameField, settings.GameLevel, gameEngine);
             shuffleService.Shuffle();

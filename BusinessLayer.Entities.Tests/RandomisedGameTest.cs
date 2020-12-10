@@ -18,7 +18,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Tests
         [SetUp]
         public void Setup()
         {
-            _mockGameEngine = GameEngine.CreateInstance();
+            _mockGameEngine = new GameEngine();
             _mockGameField = new GameField(3, 3);
         }
 

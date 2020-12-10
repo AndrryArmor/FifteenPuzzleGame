@@ -8,17 +8,8 @@ namespace FifteenPuzzleGame.BusinessLayer.Entities
 {
     public class GameEngine
     {
-        private static GameEngine _gameEngine;
-
-        private GameEngine()
+        public GameEngine()
         {
-        }
-
-        public static GameEngine CreateInstance()
-        {
-            if (_gameEngine == null)
-                _gameEngine = new GameEngine();
-            return _gameEngine;
         }
 
         public bool MakeMove(Tile tile, Direction direction, GameField gameField)
