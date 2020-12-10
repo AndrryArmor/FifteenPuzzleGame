@@ -14,7 +14,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Games
         private readonly Random _random;
         private readonly int _randomMovesCount;
 
-        public RandomisedGame(GameSettings settings) : base(settings) 
+        public RandomisedGame(GameSettings settings) : base(settings)
         {
             int secondsNow = DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second;
             _random = new Random(secondsNow);

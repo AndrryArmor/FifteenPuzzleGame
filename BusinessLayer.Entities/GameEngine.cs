@@ -58,9 +58,12 @@ namespace FifteenPuzzleGame.BusinessLayer.Entities
 
         private void Swap(Tile left, Tile right, GameField gameField)
         {
-            //Tile temp = gameField[left.Row, left.Column];
-            gameField[left.Row, left.Column] = gameField[right.Row, right.Column];
-            //gameField[right.Row, right.Column] = temp;
+            int leftRow = left.Row;
+            int leftColumn = left.Column;
+
+            Tile temp = gameField[leftRow, leftColumn];
+            gameField[right.Row, right.Column] = temp;
+            gameField[leftRow, leftColumn] = right;
         }
     }
 }

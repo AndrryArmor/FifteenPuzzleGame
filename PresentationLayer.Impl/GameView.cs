@@ -39,8 +39,15 @@ namespace FifteenPuzzleGame.PresentationLayer.Impl
 
         public void ShowSuccessMessage(int moveCount)
         {
-            _displayer.ShowText("Hooray! You solved the puzzle in " + moveCount + " moves");
-            _displayer.ShowText("Press <ESC> to quit game ...");
+            string resizableBorderElement = "";
+            for (int i = 0; i < moveCount.ToString().Length; i++)
+            {
+                resizableBorderElement += "=";
+            }
+
+            _displayer.ShowText("===================================" + resizableBorderElement + "========");
+            _displayer.ShowText("= Hooray! You solved the puzzle in " + moveCount + " moves =");
+            _displayer.ShowText("===================================" + resizableBorderElement + "========");
         }
 
         public void ShowErrorMessage()

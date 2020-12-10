@@ -40,20 +40,20 @@ namespace FifteenPuzzleGame.BusinessLayer.Impl.Services
         private int GetShuffleCount(GameLevel gameLevel)
         {
             int shuffles = 0;
-            int numbersProduct = _gameField.Rows * _gameField.Columns;
+            int numbersSum = _gameField.Rows + _gameField.Columns;
             switch (gameLevel)
             {
                 case GameLevel.Easy:
-                    shuffles = numbersProduct;
+                    shuffles = numbersSum;
                     break;
                 case GameLevel.Medium:
-                    shuffles = numbersProduct * (int)Math.Sqrt(numbersProduct);
+                    shuffles = numbersSum * (int)Math.Sqrt(numbersSum);
                     break;
                 case GameLevel.Hard:
-                    shuffles = numbersProduct * (_gameField.Rows + _gameField.Columns);
+                    shuffles = numbersSum * numbersSum;
                     break;
             }
-            return shuffles;
+            return shuffles % 2 == 1 ? --shuffles : shuffles;
         }
     }
 }

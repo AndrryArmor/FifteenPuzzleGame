@@ -24,9 +24,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Entities
                     Field[i, j] = new Tile(i, j, value);
                 }
             }
-
-            Tile spaceTile = new Tile(rows - 1, columns - 1, 0);
-            Field[rows - 1, columns - 1] = spaceTile;
+            Field[rows - 1, columns - 1] = new Tile(rows - 1, columns - 1, 0);
         }
 
         private GameField(Tile[,] field)
@@ -43,11 +41,7 @@ namespace FifteenPuzzleGame.BusinessLayer.Entities
             get => Field[row, column];
             set
             {
-                Tile temp = Field[row, column];
                 Field[row, column] = value;
-                Field[value.Row, value.Column] = temp;
-                temp.Row = value.Row;
-                temp.Column = value.Column;
                 value.Row = row;
                 value.Column = column;
             }
